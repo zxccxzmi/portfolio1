@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Muhammad Ibrohim | Portfolio</title>
+  <title> Muhammad Ibrohim | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -34,9 +34,6 @@
       color: white;
       text-align: center;
       padding: 3rem 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
 
     header h1 {
@@ -118,26 +115,6 @@
       background-color: var(--light-bg);
     }
 
-    .zorroq {
-      display: flex;
-      justify-content: space-between;
-      padding-top: 2rem;
-      align-items: center;
-      margin-top: 3rem;
-    }
-
-    .zorroq img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px var(--shadow);
-    }
-
-    .zorroq div {
-      flex: 1;
-      padding-left: 2rem;
-    }
-
     /* === Button Hover === */
     .btn {
       display: inline-block;
@@ -157,6 +134,27 @@
       transform: translateY(-5px);
     }
 
+    /* === Kontakt Bo'limi === */
+    .contact {
+      text-align: center;
+      padding-top: 2rem;
+    }
+
+    .contact a {
+      display: inline-block;
+      margin: 1rem 2rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .contact a:hover {
+      color: var(--btn-hover-bg);
+      text-decoration: underline;
+    }
+
     footer {
       background-color: var(--secondary);
       color: white;
@@ -165,6 +163,7 @@
       font-size: 1rem;
       margin-top: 3rem;
     }
+
   </style>
 </head>
 <body>
@@ -176,7 +175,7 @@
 
   <div class="container">
     <!-- Men Haqimda -->
-    <section id="about" class="about">
+    <section class="about">
       <h2>Men haqimda</h2>
       <p>Assalomu alaykum! Men — Nigmatov Muhammad Ibrohim, yosh bo‘lishimga qaramay, IT sohasida faoliyat yuritib kelayotgan dasturchiman.</p>
       <p>Mutaxassisligim quyidagi yo‘nalishlarni qamrab oladi:</p>
@@ -188,10 +187,11 @@
         <li>PowerPoint taqdimotlar tayyorlash</li>
         <li>Ingliz tili — B1 daraja (xalqaro sertifikat imtihonlariga tayyorgarlik bosqichida)</li>
       </ul>
+      <a href="https://t.me//+78Z_nIZoCZ4wZmZi" class="btn" target="_blank">Mening Telegram kanalimga o'ting</a>
     </section>
 
     <!-- Ko'nikmalar -->
-    <section id="skills" class="skills">
+    <section class="skills">
       <h2>Ko'nikmalar</h2>
       <div class="card">Python</div>
       <div class="card">HTML & CSS</div>
@@ -201,14 +201,12 @@
       <div class="card">Ingliz tili (B1)</div>
     </section>
 
-    <!-- Zorroq bo'limi -->
-    <section id="zorroq" class="zorroq">
-      <div>
-        <h2>Yangi Loyihalar</h2>
-        <p>Yangi loyihalar bilan tanishing!</p>
-        <a href="https://t.me/+78Z_nIZoCZ4wZmZi" class="btn" target="_blank">Loyihalarimni ko'ring</a>
-      </div>
-      <img src="https://via.placeholder.com/400" alt="Zorroq Image">
+    <!-- Kontakt -->
+    <section class="contact">
+      <h2>Biz bilan bog‘laning</h2>
+      <a href="mailto:nigmatov787@example.com">Email orqali yozing</a>
+      <a href="https://t.me/zxccxzmi" target="_blank">Telegram orqali bog'laning</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn profilim</a>
     </section>
   </div>
 
