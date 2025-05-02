@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title> Muhammad Ibrohim | Portfolio</title>
+  <title>Muhammad Ibrohim | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     :root {
       --primary: #2b6cb0;
@@ -14,6 +15,14 @@
       --card-bg: #ffffff;
       --shadow: rgba(0, 0, 0, 0.1);
       --btn-hover-bg: #2563eb;
+      --text-color: #333;
+    }
+
+    body.dark {
+      --light-bg: #1a202c;
+      --card-bg: #2d3748;
+      --text-color: #e2e8f0;
+      --secondary: #1a202c;
     }
 
     * {
@@ -24,9 +33,10 @@
     }
 
     body {
-      background: linear-gradient(to bottom right, #e0f2fe, #ffffff);
-      color: #333;
+      background: var(--light-bg);
+      color: var(--text-color);
       line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
     }
 
     header {
@@ -34,12 +44,12 @@
       color: white;
       text-align: center;
       padding: 3rem 1rem;
+      position: relative;
     }
 
     header h1 {
       font-size: 3rem;
       font-weight: 600;
-      animation: fadeIn 1s ease-out;
     }
 
     header p {
@@ -48,9 +58,16 @@
       opacity: 0.9;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+    .dark-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     .container {
@@ -61,12 +78,6 @@
 
     section {
       margin-bottom: 4rem;
-      animation: slideUp 1s ease-out;
-    }
-
-    @keyframes slideUp {
-      0% { transform: translateY(50px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
     }
 
     h2 {
@@ -77,15 +88,16 @@
       padding-bottom: 0.5rem;
     }
 
-    /* === Men Haqimda Qismi === */
-    .about p {
-      margin-top: 1rem;
+    .about p, ul {
       font-size: 1.2rem;
-      line-height: 1.7;
-      color: var(--secondary);
+      color: var(--text-color);
+      margin-top: 1rem;
     }
 
-    /* === Ko'nikmalar === */
+    ul li {
+      margin-left: 20px;
+    }
+
     .skills {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -93,7 +105,7 @@
       padding-top: 1rem;
     }
 
-    .skills .card {
+    .card {
       background-color: var(--card-bg);
       padding: 1.5rem;
       border-radius: 12px;
@@ -101,40 +113,39 @@
       text-align: center;
       font-weight: 600;
       color: var(--primary);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
       border-left: 5px solid var(--accent);
-      min-height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      transition: 0.3s;
     }
 
-    .skills .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    .card:hover {
+      transform: translateY(-5px);
       background-color: var(--light-bg);
     }
 
-    /* === Button Hover === */
+    .card i {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
     .btn {
       display: inline-block;
       background-color: var(--primary);
       color: white;
       padding: 10px 25px;
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-size: 1.1rem;
       border-radius: 30px;
       margin-top: 20px;
       text-decoration: none;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      transition: 0.3s;
     }
 
     .btn:hover {
       background-color: var(--btn-hover-bg);
-      transform: translateY(-5px);
+      transform: translateY(-3px);
     }
 
-    /* === Kontakt Bo'limi === */
     .contact {
       text-align: center;
       padding-top: 2rem;
@@ -145,14 +156,16 @@
       margin: 1rem 2rem;
       color: var(--primary);
       text-decoration: none;
-      font-weight: 500;
       font-size: 1.2rem;
       transition: color 0.3s ease;
     }
 
     .contact a:hover {
       color: var(--btn-hover-bg);
-      text-decoration: underline;
+    }
+
+    .contact i {
+      margin-right: 10px;
     }
 
     footer {
@@ -163,7 +176,6 @@
       font-size: 1rem;
       margin-top: 3rem;
     }
-
   </style>
 </head>
 <body>
@@ -171,10 +183,10 @@
   <header>
     <h1>Muhammad Ibrohim Nigmatov</h1>
     <p>Dasturchi | Telegram Botlar | Web Ilovalar | Excel Avtomatlashtirish</p>
+    <button class="dark-toggle" onclick="toggleDarkMode()">Dark Mode</button>
   </header>
 
   <div class="container">
-    <!-- Men Haqimda -->
     <section class="about">
       <h2>Men haqimda</h2>
       <p>Assalomu alaykum! Men — Nigmatov Muhammad Ibrohim, yosh bo‘lishimga qaramay, IT sohasida faoliyat yuritib kelayotgan dasturchiman.</p>
@@ -188,30 +200,35 @@
         <li>Ingliz tili — B1 daraja (xalqaro sertifikat imtihonlariga tayyorgarlik bosqichida)</li>
       </ul>
       <a href="https://t.me/zxccxzmin" class="btn" target="_blank">Mening Telegram kanalimga o'ting</a>
-
-    <!-- Ko'nikmalar -->
-    <section class="skills">
-      <h2>Ko'nikmalar</h2>
-      <div class="card">Python</div>
-      <div class="card">HTML & CSS</div>
-      <div class="card">Telegram Botlar</div>
-      <div class="card">Excel avtomatlashtirish</div>
-      <div class="card">PowerPoint</div>
-      <div class="card">Ingliz tili (B1)</div>
     </section>
 
-    <!-- Kontakt -->
+    <section class="skills">
+      <h2>Ko'nikmalar</h2>
+      <div class="card"><i class="fa-brands fa-python"></i>Python</div>
+      <div class="card"><i class="fa-brands fa-html5"></i>HTML & CSS</div>
+      <div class="card"><i class="fa-brands fa-telegram"></i>Telegram Botlar</div>
+      <div class="card"><i class="fa-solid fa-file-excel"></i>Excel avtomatlashtirish</div>
+      <div class="card"><i class="fa-solid fa-chalkboard-user"></i>PowerPoint</div>
+      <div class="card"><i class="fa-solid fa-language"></i>Ingliz tili (B1)</div>
+    </section>
+
     <section class="contact">
       <h2>Biz bilan bog‘laning</h2>
-      <a href="mailto:nigmatov787@example.com">Email orqali yozing</a>
-      <a href="https://t.me/zxccxzmi" target="_blank">Telegram orqali bog'laning</a>
-      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn profilim</a>
+      <a href="mailto:nigmatov787@example.com"><i class="fa-solid fa-envelope"></i>Email orqali yozing</a>
+      <a href="https://t.me/zxccxzmin" target="_blank"><i class="fa-brands fa-telegram"></i>Telegram orqali bog'laning</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fa-brands fa-linkedin"></i>LinkedIn profilim</a>
     </section>
   </div>
 
   <footer>
     <p>&copy; 2025 Muhammad Ibrohim Nigmatov</p>
   </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
 
 </body>
 </html>
